@@ -1,0 +1,16 @@
+@media all and (max-width: 500px) {
+    #background-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .main-wrapper {
+        padding-inline: 20px;
+    }
+    #background-image {
+        max-width: 100%;
+        height: auto
+    }
+}

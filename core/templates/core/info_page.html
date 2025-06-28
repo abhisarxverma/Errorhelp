@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Errorhelp - Info{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/info_page_media.css' %}">
+<link rel="stylesheet" href="{% static 'css/info_page.css' %}">
+{% endblock %}
+
+{% block header_title %}ErrorInfo{% endblock %}
+
+{% block body %}
+
+<main class="main">
+    <h2 id="errorframe-message">{{ message }}</h2>
+    <img id="background-image" src="{% static 'images/fade_blue_logo.png' %}" alt="">
+    <button id="info-page-home-button"><i class="fa-solid fa-house"></i><span>Home</span></button>
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/info_page.js' %}" type="module" defer></script>
+{% endblock %}

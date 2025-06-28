@@ -1,0 +1,46 @@
+{% load static %}
+
+<div id="success-popup-wrapper">
+
+    <div class="success-popup">
+        <div class="heading-group">
+            <img id="popup-logo" src="{% static 'images/logo_simple_blue.png' %}" alt="Errorfrmae logo image">
+            <div class="popup-header-text-group">
+                <span id="success-popup-title">ErrorFrame Successfully Created</span>
+                <span id="success-popup-subtitle">Now Share Everywhere For People To Help</span>
+            </div>
+        </div>
+        <div class="urls-box">
+            <div class="link-wrapper">
+                <p class="link-label">
+                    <span class="link-label-text popup-section-label">Errorframe URL</span>
+                    <span id="share-link-label-info" class="link-label-info">To share the Errorframe</span>
+                </p>
+                <div class="link-box">
+                    <p class="link-text" id="share-link-popup">errorframe url</p>
+                    <i id="share-link-copy-icon" class="fa-regular fa-copy copy-icon"></i>
+                </div>
+            </div>
+            <div class="link-wrapper">
+                <div class="link-label">
+                    <span class="link-label-text popup-section-label">Delete URL</span>
+                    <span id="delete-link-label-info" class="link-label-info">Going to this URL will delete the Errorframe</span>
+                </div>
+                <div class="link-box">
+                    <p class="link-text" id="delete-link-popup">delete url</p>
+                    <i id="delete-link-copy-icon" class="fa-regular fa-copy copy-icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="share-message-wrapper">
+            <div class="share-message-label-wrapper">
+                <p class="share-message-label popup-section-label">Share this message with developers to help</p>
+                <i id="share-message-copy-icon" class="fa-regular fa-copy copy-icon"></i>
+            </div>
+            <div class="share-message-box" id="share-message">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex nobis, consequatur excepturi voluptate velit eaque perferendis nemo itaque, impedit doloribus similique ea dignissimos maiores pariatur non. Soluta maiores, velit aut illum sunt sequi eveniet quos necessitatibus earum, consectetur explicabo esse possimus delectus repellendus quisquam dicta recusandae cum. Eaque, vitae temporibus.
+                <!-- <p id="share-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quia odio minima error provident omnis voluptatum cumque nesciunt temporibus, blanditiis beatae nisi in nobis assumenda modi culpa dolor vel? Ea culpa minima esse possimus est, vitae, sunt, ipsa repellat ex accusamus enim sint. Magnam beatae facere adipisci, necessitatibus officiis quam.</p> -->
+            </div>
+        </div>
+        <button id="go-to-errorframe-button">Go To Your Errorframe</button>
+    </div>
+</div>

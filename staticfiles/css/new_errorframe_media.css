@@ -1,0 +1,41 @@
+/* NEW ERROR PAGE MEDIA QUERIES */
+
+@media all and (max-width: 700px) {
+    .main-wrapper {
+        padding-inline: 25px;
+    }
+    #submit-error-button {
+        width: 100%;
+    }
+    #page-header-fade-logo {
+        width: 200px;
+        height: auto;
+        right: -50px;
+        top: -100px;
+        rotate: 325deg;
+    }
+}
+
+@media all and (max-width: 450px) {
+    .main-wrapper {
+        padding-inline: 20px;
+    }
+    .page-subtitle {
+        max-width: 100%;
+    }
+    .input-sublabel {
+        font-size: 10px;
+    }
+    .error-input {
+        font-size: 13px;
+    }
+    .page-title{
+        font-size: 30px;
+    }
+}
+
+@media all and (max-width: 350px) {
+    #drag-and-drop-text {
+        font-size: 12px;
+    }
+}

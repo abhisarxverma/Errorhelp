@@ -1,0 +1,72 @@
+:root {
+    --logo-clr : #58a6ff;
+    --font-family : "onest", sans-serif;
+    --errortext-font-family: "cascadia code", sans-serif;
+    --header-bg : #161b22;
+    --main-button-bg: #238636;
+    --main-button-hover-bg : #1ab539;
+    --main-bg : rgb(13,17,23);
+    --input-border-clr : rgb(48,54,61);
+    --input-bg : #0d1117;
+    --browse-file-hover-bg: rgb(48, 50, 53);
+    --browse-file-bg: #21262d;
+    --uploaded-file-bg: #161b22;
+    --uploaded-file-hover-bg : #252c38;
+    --box-bg : #161b22;
+}
+
+main.main {
+    max-width: 1000px;
+    margin-inline: auto;
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#errorframe-message {
+    font-family: "onest";
+    color: white;
+    text-align: center;
+}
+
+#background-image {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    opacity: 0.1;
+    transition: opacity .2s ease-in-out;
+}
+
+#background-image:hover {
+    opacity: 0.2;
+}
+
+#info-page-home-button {
+    height: 50px;
+    width: 250px;
+    margin-inline: auto;
+    border-radius: 7px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: transparent;
+    color: white;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    font-family: "onest" sans-serif;
+    box-shadow: 1px 1px 10px .5px var(--logo-clr) inset;
+    transition: all 0.3s ease-in-out;
+}
+
+#info-page-home-button i {
+    font-size: 17px;
+    align-self: center;
+}
+
+#info-page-home-button:hover {
+    transform: scale(1.03);
+}

@@ -1,0 +1,113 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}New Errorframe - Errorhelp{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/new_error.css' %}">
+<link rel="stylesheet" href="{% static 'css/success_popup.css' %}">
+<link rel="stylesheet" href="{% static 'css/new_errorframe.css' %}">
+<link rel="stylesheet" href="{% static 'css/new_errorframe_media.css' %}">
+{% endblock %}
+
+{% block header_title %}New Errorframe{% endblock %}
+
+{% block body %}
+<main class="main">
+
+    <div class="page-header-group">
+        <div class="page-header-text-wrapper">
+            <p class="page-title">Create New Error Help Link</p>
+            <p class="page-subtitle">Get Full help from the developer community by just sharing Erroframe link that has all your error causing code and context.</p>
+        </div>
+        <img id="page-header-fade-logo" src="{% static 'images/fade_blue_logo.png' %}" alt="">
+    </div>
+
+    <div class="file-uploader-group input-group">
+        <div class="input-header-group">
+            <div class="label-group">
+                <p class="input-label">Upload Code Files</p>
+                <p class="input-sublabel">Add code files related to the error.</p>
+            </div>
+            <span class="input-error" id="file-upload-input-error"></span>
+        </div>
+        <div class="file-uploader-box">
+            <i id="file-icon" class="fa-solid fa-file-code uploader-text"></i>
+            <p id="drag-and-drop-text" class="uploader-text">Drag And Drop Your Code Files Here</p>
+            <p id="or-text" class="uploader-text">or</p>
+            <label for="fileUpload" id="file-uploader-label">Browse Files</label>
+            <input id="file-uploader-input"
+                accept=".js,.ts,.jsx,.tsx,.py,.java,.kt,.kts,.rb,.go,.rs,.c,.cpp,.h,.cs,.swift,.php,.sh,.bash,.bat,.pl,.lua,.r,.scala,.m,.nim,.jl,.dart,.clj,.fs,.asm,.e,.vb,.vbs,.groovy,.erl,.ex,.exs,.coffee,.sol,.hs,.lhs,.f90,.f95,.f03,.f08,.f77,.for,.re,.rei,.purs,.ml,.mli,.cr,.v,.zig,.nix,.cue,.fish,.ps1,.psm1,.typ,.astro,.mdx,.deno.json,.bunfig.toml,.gql,.graphql,.glsl,.snippets,.ejs,.hbs,.svelte,.vue,.html,.htm,.xhtml,.xml,.svg,.json,.yml,.yaml,.env,.ini,.toml,.cfg,.conf,.md,.markdown,.txt,.log,.gitignore,.npmrc,.eslintrc,.prettierrc,.babelrc,.editorconfig,.stylelintrc,.dockerfile,.dockerignore,.makefile,.gitattributes,.gradle,.tsconfig,.package-lock.json,.package.json,.pyproject.toml,.requirements.txt,.Pipfile,.Pipfile.lock,.csproj,.sln,.plist,.properties,.config,.scss,.sass,.less,.css,.bazel,.bzl,.BUILD,.mod,.lock, .txt"
+                name="fileUpload" type="file" multiple directory >
+        </div>
+    </div>
+
+    <div class="uploaded-files-group input-group hide">
+        <p class="input-label">Uploaded Files</p>
+        <div class="uploaded-files-list">
+
+        </div>
+    </div>
+
+
+    <div class="title-input-group input-group">
+        <div class="input-header-group">
+            <div class="label-group">
+                <label for="errorTitle" class="input-label">Error Title</label>
+                <p class="input-sublabel">A short and clean title bring right helper</p>
+            </div>
+            <span class="input-error" id="title-input-error"></span>
+        </div>
+        <input id="errorTitleInput" class="error-input" name="errorTitle" type="text"
+            placeholder="e.g. Type Error In React Component">
+    </div>
+
+    <div class="errortext-input-group input-group">
+        <div class="input-header-group">
+            <div class="label-group">
+                <label for="errorText" class="input-label">Error Message</label>
+                <div class="input-sublabel">Copy and Paste all the Error message you are getting</div>
+            </div>
+            <span class="input-error" id="errortext-input-error"></span>
+        </div>
+        <textarea id="errorTextInput" class="error-input" name="errorText" type="text"
+            placeholder="Paste Your Error Message Here...."></textarea>
+    </div>
+
+    <div class="errordescription-input-group input-group">
+        <div class="input-header-group">
+            <div class="label-group">
+                <label for="errorDescription" class="input-label">Error Description</label>
+                <div class="input-sublabel">Anything you want to tell to the hlpers</div>
+            </div>
+            <span class="input-error" id="description-input-error"></span>
+        </div>
+        <textarea id="errorDescriptionInput" class="error-input" name="errorDescription" type="text"
+            placeholder="Describe What You Were Trying To Do Or Any Context That Might Help...."></textarea>
+    </div>
+
+    <div class="name-input-group input-group">
+        <div class="input-header-group">
+            <div class="label-group">
+                <label for="nameInput" class="input-label">Your Name</label>
+                <div class="input-sublabel">To let helpers know whom they are helping</div>
+            </div>
+            <span class="input-error" id="name-input-error"></span>
+        </div>
+        <input id="nameInput" class="error-input" name="NameInput" type="text"
+            placeholder="e.g. Chris"></input>
+    </div>
+
+    <div class="button-group">
+        <button id="submit-error-button" class="main-button">Submit Error</button>
+    </div>
+
+</main>
+
+{% include "core/success_popup.html" %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/new_error.js' %}" type="module"></script>
+{% endblock %}

@@ -1,0 +1,40 @@
+@media all and (max-width: 600px) {
+    #success-popup-title {
+        font-size: 20px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    #success-popup-title {
+        font-size: 20px;
+    }
+    .success-popup .link-label-info {
+        font-size: 9px;
+        font-weight: 700 !important;
+    }
+    #popup-logo {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .success-popup {
+        height: 600px;
+        gap: 30px;
+        padding-inline: 20px;
+    }
+    #success-popup-title {
+        margin-right: 20px;
+    }
+    .success-popup .link-label-info {
+        font-size: 7px;
+    }
+    .success-popup .link-label-text {
+        font-size: 9px;
+    }
+    .share-message-label {
+        font-size: 9px;
+    }
+}

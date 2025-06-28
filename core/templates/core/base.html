@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-XXXXX+y+XXXXX/XXXX==\" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Prism Js -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    
+    <div id="top-general-message" class="top-message"></div>
+    <div id="top-error-message" class="top-message"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-title-group">
+                <img id="logo" src="{% static 'images/logo_simple_blue.png' %}" alt="Errorhelp logo image">
+                <span id="header-title">{% block header_title %}{% endblock %}</span>
+            </div>
+                {% block header_buttons %}
+                <button id="github-button">
+                    <span id="github-button-text">Github</span>
+                    <i id="github-icon" class="fa-brands fa-github"></i>
+                </button>
+                {% endblock %}
+        </header>
+
+        <div class="main-wrapper">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+    <div class="backdrop" id="backdrop"></div>
+
+    <script src="{% static 'js/script.js' %}" defer></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

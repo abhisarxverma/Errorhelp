@@ -1,0 +1,156 @@
+@media all and (max-width: 900px) {
+    .page-header-group {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 40px;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .code-box {
+        grid-template-columns: 200px 1fr;
+    }
+
+    #main-fade-top-logo {
+        width: 170px;
+        height: auto;
+        top: 80px;
+        rotate: 0deg;
+    }
+}
+
+@media all and (max-width: 630px) {
+    .main-wrapper{
+        padding-inline: 30px;
+    }
+    main.main {
+        gap: 40px;
+    }
+
+    .code-box {
+        grid-template-columns: 200px 1fr;
+    }
+
+    #main-fade-top-logo {
+        display: none;
+        visibility: hidden;
+    }
+
+    .help-comment-box {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto auto;
+        gap: 20px;
+    }
+
+    #helper-name-input {
+        grid-column: 1/-1;
+        grid-row: 2/3;
+        width: 100%;
+    }
+
+    #help-comment-post-button {
+        grid-column: 1/-1;
+        grid-row: 3/-1;
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .main-wrapper {
+        padding-inline: 30px;
+    }
+
+    .help-comment-time {
+        font-size: 9px;
+    }
+
+    .help-comment-name {
+        font-size: 10px;
+    }
+
+    #creator-label {
+        font-size: 13px;
+    }
+
+    #creator-name {
+        font-size: 19px;
+    }
+
+    .creator-name-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .main-wrapper {
+        padding-inline: 15px;
+    }
+
+    .link-box {
+        max-width: 90vw;
+        min-width: 0px;
+        font-size: 10px;
+    }
+
+    #share-link {
+        font-size: 13px;
+    }
+
+    .code-top-right-buttons-wrapper {
+        gap: 5px;
+    }
+
+    .code-top-right-buttons-wrapper button {
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+    }
+
+    .error-title {
+        font-size: 25px;
+    }
+
+    pre[class*="language-"]>code {
+        font-size: 11px;
+    }
+
+    #errormessage {
+        font-size: 11px;
+    }
+
+    #error-description {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    #help-comment-textarea {
+        font-size: 13px;
+    }
+
+    .help-comment-header {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .help-comment .help-comment-time {
+        font-size: 10px;
+    }
+    
+    .comment-side-logo {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        opacity: 0.3;
+    }
+
+    .help-comment-content {
+        margin: 0;
+    }
+
+}

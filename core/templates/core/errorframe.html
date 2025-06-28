@@ -1,0 +1,129 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Errorframe - Errorhelp{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/errorframe.css' %}">
+<link rel="stylesheet" href="{% static 'css/code.css' %}">
+<link rel="stylesheet" href="{% static 'css/comment.css' %}">
+<link rel="stylesheet" href="{% static 'css/errorframe_media.css' %}">
+{% endblock %}
+
+{% block header_title %}Errorframe{% endblock %}
+
+{% block body %}
+{{ codefiles|json_script:"file-structure-data" }}
+{{ comments|json_script:"comments"}}
+
+<main class="main" data-error-id="{{ shared_error.id }}">
+    <img id="main-fade-top-logo" class="main-fade-logo" src="{% static 'images/fade_blue_logo.png' %}" alt="Errorhelp fade logo image">
+
+    <div class="page-header-group">
+        <div class="creator-name-group">
+            <span id="creator-label">Errorframe by</span>
+            <p id="creator-name">{{ shared_error.creator_name }}</p>
+        </div>
+        <div class="share-link-box">
+            <span id="share-link-title">Error Frame link</span>
+            <div class="link-box">
+                <p id="share-link">{{ errorframe_url }}</p>
+                <button data-url="{{ errorframe_url }}" id="copy-button"><i class="fa-solid fa-copy"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="error-header-group">
+        <div class="error-title-box">
+            <span class="error-title">{{ shared_error.title }}</span>
+            <div class="error-datetime-group">
+                <span class="error-datetime">{{ shared_error.created_at }}</span>
+            </div>
+        </div>
+        <div class="box-wrapper">
+            <p class="box-label">Error Description</p>
+            <p id="error-description">
+                {{ shared_error.description }}
+            </p>
+        </div>
+    </div>
+
+
+    <div class="code-box" id="codeBox">
+        <div class="code-box-header-group">
+            <button title="Toggle-menu" class="code-top-right-buttons" id="code-menu-button"><i class="fa-solid fa-bars"></i></button>
+            <p class="code-box-title">Code Snapshot</p>
+            <div class="code-top-right-buttons-wrapper">
+                <!-- <button class="code-top-right-buttons" id="download-code-button"><i class="fa-solid fa-download"></i></button> -->
+                <button title="Maximize Code View" class="code-top-right-buttons" id="expand-code-button"><i class="fa-solid fa-expand"></i></button>
+                <button title="Minimize Code View" class="code-top-right-buttons" id="shrink-code-button"><i class="fa-solid fa-compress"></i></button>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="file-tree">
+            </div>
+        </div>
+
+        <div class="main-view">
+            <pre class="line-numbers"><code class="language-python">
+def greet(name): 
+    print("Hello World")
+</code></pre>
+</div>
+<img id="codeeditor-side-logo" src="{% static 'images/fade_blue_logo.png' %}" alt="">
+    </div>
+
+    <div id="errormessage-box-wrapper" class="box-wrapper">
+        <span class="box-label">Error Message</span>
+        <div class="errormessage-box">
+            <p id="errormessage">{{ shared_error.error_text }}</p>
+        </div>
+    </div>
+
+    <section class="help-comments-section">
+        <div class="post-help-comment-box-wrapper">
+            <p class="help-comments-section-label">Post Help Comment</p>
+            <form class="help-comment-box">
+                {% csrf_token %}
+                <textarea class="help-comment-input" name="comment" id="help-comment-textarea" placeholder="Add a Helpful Comment...." required></textarea>
+                <input class="help-comment-input" type="text" name="helper-name" id="helper-name-input" placeholder="Helper name" required>
+                <button class="main-button" id="help-comment-post-button" type="submit">Post Help Comment</button>
+            </form>
+        </div>
+        <div class="help-comments-list-wrapper">
+            <p class="help-comments-section-label">Help Comments</p>
+            <div class="help-comments-list">
+                {% if comments %}
+                    {% for comment in comments %}
+                    <div class="help-comment">
+                        <div class="help-comment-header">
+                            <div class="help-comment-name-group">
+                                <i class="fa-regular fa-user user-icon"></i>
+                                <div class="help-comment-name"><span class="helper-title">Helper</span><span>{{ comment.commentor_name }}</span></div>
+                            </div>
+                            <span class="help-comment-time">{{ comment.comment_time }}</span>
+                        </div>
+                        <p class="help-comment-content">{{ comment.content }}</p>
+                        <img class="comment-side-logo" src="{% static 'images/fade_blue_logo.png' %}" alt="">
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-comments-text">No help comments for now, Be the first to help {{ shared_error.creator_name }}....</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/show_error.js' %}" type="module" defer></script>
+<script src="{% static 'js/comment.js' %}" type="module" defer></script>
+<script>
+    Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs/components/';
+    const fadeLogoUrl = "{% static 'images/fade_blue_logo.png' %}"
+</script>
+{% endblock %}

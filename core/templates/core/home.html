@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Errorhelp - Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_media.css' %}">
+{% endblock %}
+
+{% block header_title %}Errorhelp{% endblock %}
+
+
+{% block body %}
+
+
+<main class="main">
+    <div class="left-container">
+        <div class="left-text-container">
+            <span class="heading">Sending Error Screenshots and Code in Chats are <span class="strike-text">Inessential</span>.</span>
+            <span class="list-heading subtitle">Create Errorframy by putting everything about error at one place and just send link to every developer who wants to help.</span>
+            <ul class="features">
+                <li><span class="icon"><i class="fa-solid fa-file-code"></i></span>Share Relevant Code Files that are causing error</li>
+                <li><span class="icon"><i class="fa-solid fa-terminal"></i></span>Share the Error Terminal Message by Copy pasting</li>
+                <li><span class="icon"><i class="fa-solid fa-quote-left"></i></span>Share What you were you trying to do or anything that can help.</li>
+            </ul>
+        </div>
+        <div class="left-buttons-container">
+            <button id="home-create-errorframe-button"><i class="fa-solid fa-plus home-button-icon"></i>New Errorframe</button>
+            <button id="example-errorframe-button">Example Errorframe</button>
+        </div>
+
+    </div>
+    <div class="right-container">
+        {% include "core/chat.html" %}
+    </div>
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const example_error_link = "{{ example_error_link }}"
+</script>
+<script src="{% static 'js/home.js' %}" type="module" defer>
+</script>
+{% endblock %}

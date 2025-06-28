@@ -1,0 +1,211 @@
+:root {
+    --logo-clr : #58a6ff;
+    --font-family : "onest", sans-serif;
+    --errortext-font-family: "cascadia code", sans-serif;
+    --header-bg : #161b22;
+    --main-button-bg: #238636;
+    --main-button-hover-bg : #1ab539;
+    --main-bg : rgb(13,17,23);
+    --input-border-clr : rgb(48,54,61);
+    --input-bg : #0d1117;
+    --browse-file-hover-bg: rgb(48, 50, 53);
+    --browse-file-bg: #21262d;
+    --uploaded-file-bg: #161b22;
+    --uploaded-file-hover-bg : #252c38;
+    --box-bg : #161b22;
+    --bg : #0d1117;
+    --border: #2d3239;
+    --active-file-bg: #1f2937;
+}
+
+.main-wrapper, html, body, .container {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+main.main {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+    gap: 30px;
+    color: white;
+    margin-inline: auto;
+    padding-bottom: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.creator-name-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#creator-label {
+    color: white;
+    font-size: 18px;
+    font-family: "onest";
+}
+
+#creator-name {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.page-header-group {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+.error-header-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+}
+
+.error-datetime-group {
+    color: rgb(183, 183, 183);
+    font-size: 12px;
+}
+
+.error-title {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.error-title-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.error-description-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#error-description {
+    font-size: 15px;
+    font-weight: 500;
+    white-space: pre-wrap;
+}
+
+.share-link-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 600;
+}
+
+#share-link-title {
+    font-size: 12px;
+    color: lightgray;
+}
+
+#share-link {
+  white-space: nowrap;
+  overflow-x: auto;           
+  scrollbar-width: none;    
+  -ms-overflow-style: none;   
+  font-size: 13px;
+  z-index: 600;
+}
+
+#share-link::-webkit-scrollbar {
+  display: none;             
+}
+
+.link-box {
+    border: 1.5px solid var(--logo-clr);
+    min-width: 300px;
+    max-width: 350px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr;
+    height: 45px;
+    padding-left: 15px;
+    align-items: center;
+    border-radius: 7px;
+    gap: 20px;
+    background-color: var(--box-bg);
+}
+
+
+#copy-button {
+    height: 100%;
+    width: 45px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border: none;
+    border-left: 1.5px solid var(--logo-clr);
+    background-color: black;
+    color: var(--logo-clr);
+    font-size: 18px;
+    transition: background-color 0.2s linear;
+}
+
+#copy-button:hover {
+    background-color: hsl(212 100% 67% / 0.2);
+}
+
+
+.box-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(197, 197, 197);
+}
+
+#errormessage-box-wrapper {
+    margin-top: 20px;
+}
+
+.errormessage-box {
+    min-height: 150px;
+    background-color: var(--box-bg);
+    padding: 25px;
+    border: 1.5px solid rgb(134, 0, 0);
+    border-radius: 7px;
+    font-family: "cascadia code" ;
+    font-weight: 500;
+    color: rgb(228, 228, 228);
+}
+
+#errormessage {
+    white-space: pre-wrap; 
+}
+
+.errormessage-box::-webkit-scrollbar {
+  width: 6px;
+}
+.errormessage-box::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.main-fade-logo {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    object-fit: cover;
+    opacity: 0.05;
+    z-index: 450;
+}
+
+#main-fade-top-logo {
+    rotate: 325deg;
+    right: 70px;
+    top: -30px;
+    overflow: hidden;
+}

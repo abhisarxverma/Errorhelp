@@ -1,0 +1,138 @@
+:root {
+    --logo-clr : #2579da;
+    --font-family : "onest", sans-serif;
+    --errortext-font-family: "cascadia code", sans-serif;
+    --header-bg : #161b22;
+    --main-button-bg: #238636;
+    --main-button-hover-bg : #2ab345;
+    --main-bg : rgb(13,17,23);
+    --input-border-clr : rgb(48,54,61);
+    --input-bg : #0d1117;
+    --browse-file-hover-bg: rgb(48, 50, 53);
+    --browse-file-bg: #21262d;
+    --uploaded-file-bg: #161b22;
+    --uploaded-file-hover-bg : #252c38;
+    --box-bg : #161b22;
+    --top-error-message-red : rgb(174, 0, 0);
+}
+
+#github-link-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+main.main {
+    /* max-width: 90%px; */
+    padding: 0px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 40px;
+    margin-inline: auto;
+    color: white;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-container {
+    padding: 40px 20px;
+    /* border: 1.5px solid var(--logo-clr); */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 25px;
+}
+
+.left-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.left-container .heading {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.left-container .subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(245, 245, 245);
+    margin-block : 20px;
+    line-height: 25px;
+}
+
+.features {
+    padding: 0;
+    margin: 0;
+    /* padding-left: 20px; */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.features li {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.features .icon {
+    color: var(--logo-clr);
+    font-size: 22px;
+    margin-right: 7px;
+    width: 40px;
+}
+
+.strike-text {
+    text-decoration: line-through;
+    text-decoration-color: var(--logo-clr);
+    text-decoration-thickness: 3px;
+    font-size: 45px;
+}
+
+.left-buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 15px;
+}
+
+.left-buttons-container button {
+    border-radius: 7px;
+    height: 45px;
+    border: none;
+    font-size: 15px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+}
+
+.left-buttons-container button:hover {
+    transform: scale(1.02);
+}
+
+#home-create-errorframe-button {
+    background-color: var(--logo-clr);
+    box-shadow: 1px 1px 15px 1px white inset;
+    color: white;
+}
+
+#example-errorframe-button {
+    background-color: var(--input-bg);
+    color: var(--logo-clr);
+    color: white;
+    box-shadow: 1px 1px 15px .5px white inset;
+}
+
+.home-button-icon {
+    margin-right: 10px;
+}

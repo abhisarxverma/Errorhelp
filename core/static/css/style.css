@@ -1,0 +1,237 @@
+:root {
+    --logo-clr : #58a6ff;
+    --font-family : "onest", sans-serif;
+    --errortext-font-family: "cascadia code", sans-serif;
+    --header-bg : #161b22;
+    --main-button-bg: #238636;
+    --main-button-hover-bg : #2ab345;
+    --main-bg : rgb(13,17,23);
+    --input-border-clr : rgb(48,54,61);
+    --input-bg : #0d1117;
+    --browse-file-hover-bg: rgb(48, 50, 53);
+    --browse-file-bg: #21262d;
+    --uploaded-file-bg: #161b22;
+    --uploaded-file-hover-bg : #252c38;
+    --box-bg : #161b22;
+    --top-error-message-red : rgb(174, 0, 0);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,p {
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+/* UTILITY CLASSES */
+
+.hide {
+    opacity : 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+/* --------------- */
+
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    margin: 0;
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container {
+    font-family: var(--font-family);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 70px;
+    background-color: var(--main-bg);
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+body.modal-open {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body.modal-open #codeBox {
+  pointer-events: auto;
+}
+
+.main-wrapper {
+    background-color: var(--main-bg);
+    padding: 0px 50px;
+}
+
+header.header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--header-bg);
+    color: white;
+    z-index: 500;
+    position: relative;
+    /* padding-left: 75px; */
+    /* box-shadow: 0 1px 6px 1px var(--logo-clr) inset; */
+}
+
+
+.header-title-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-20px);
+}
+
+#header-title {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.header-middle-group {
+    display: flex;
+    gap: 20px;
+    color: lightgray;
+    font-size: 15px;
+}
+
+.main-button {
+    font-family: var(--font-family);
+    height: 37px;
+    width: auto;
+    background-color: var(--main-button-bg);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s linear;
+    padding: 5px 30px;
+}
+
+.main-button:hover {
+    background-color: var(--main-button-hover-bg);
+}
+
+#new-error-button span {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+#errormessage {
+    font-family: var(--errortext-font-family);
+}
+
+.top-message {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.top-message.show {
+  top: 20px;
+  opacity: 1;
+}
+
+#top-general-message {
+    background-color: var(--header-bg);
+    box-shadow: 1px 1px 5px .5px var(--logo-clr) inset;
+    border: 1px solid var(--logo-clr);
+    color: white;
+}
+
+#top-error-message {
+    background-color: var(--header-bg);
+    box-shadow: 2px 2px 15px .5px var(--top-error-message-red) inset;
+    border: 1px solid var(--top-error-message-red);
+    color: white;
+}
+
+.success-popup {
+    background-color: var(--box-bg);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: 959;
+  display: none;
+}
+
+#github-button {
+    border: none;
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease-in-out;
+}
+
+#github-button span {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+#github-button:hover {
+    color: rgb(16, 147, 255);
+}
