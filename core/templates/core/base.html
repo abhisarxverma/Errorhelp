@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
 
+    <!-- favicon logo links -->
+     <link rel="icon" type="image/png" href="{% static 'images/favicon-96x96.png' %}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}" />
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}" />
+
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-XXXXX+y+XXXXX/XXXX==\" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -20,6 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Onest:wght@100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/review_media.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -44,10 +52,28 @@
         <div class="main-wrapper">
             {% block body %}{% endblock %}
         </div>
+        <footer class="site-footer">
+            <div class="footer-inner-wrapper">
+                <div class="footer-content-box">
+                    <div class="footer-logo-wrapper">
+                        <img src="{% static 'images/logo_simple_blue.png' %}" alt="Errorhelp fade right side logo image" class="footer-fade-logo" id="footer-right-fade-logo">
+                        <span id="footer-logo-title">Errorhelp</span>
+                    </div>
+                    <p id="footer-subtitle-text">Coded With Passion For My Fellow Programmers.</p>
+                    <p id="footer-copyright-text">&copy; 2025 ABSRCreatives. All rights reserved.</p>
+                </div>
+                <form class="footer-review-box">
+                    <p id="share-review-title"><i class="fa-regular fa-comments"></i><span>Share Your Valuable Feedback Cause I am Also Learning....</span></p>
+                    <textarea name="review-textarea" placeholder="Anything You want to say to the Developer Good or Bad..." id="footer-review-textarea"></textarea>
+                    <button id="footer-review-button" type="submit"><i class="fa-solid fa-paper-plane"></i><span>Send</span></button>
+                </form>
+            </div>
+        </footer>
     </div>
     <div class="backdrop" id="backdrop"></div>
 
-    <script src="{% static 'js/script.js' %}" defer></script>
+    <script src="{% static 'js/script.js' %}" defer type="module"></script>
+    <script src="{% static 'js/review.js' %}" defer type="module"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

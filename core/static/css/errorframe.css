@@ -93,7 +93,7 @@ main.main {
 #error-description {
     font-size: 15px;
     font-weight: 500;
-    white-space: pre-wrap;
+    white-space: wrap;
 }
 
 .share-link-box {

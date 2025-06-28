@@ -63,7 +63,7 @@ body {
     grid-template-rows: auto 1fr;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-bottom: 70px;
+    /* padding-bottom: 70px; */
     background-color: var(--main-bg);
 }
 
@@ -225,6 +225,7 @@ header.header {
     align-items: center;
     justify-content: center;
     transition: color 0.3s ease-in-out;
+    font-family: "cascadia code" sans-serif;
 }
 
 #github-button span {
@@ -234,4 +235,133 @@ header.header {
 
 #github-button:hover {
     color: rgb(16, 147, 255);
+}
+
+footer.site-footer {
+    background-color: var(--header-bg);
+    height: 400px;
+    gap: 10px;
+    margin-top: 50px;
+    padding-block: 30px;
+    gap: 2px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-inner-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 80%;
+    gap: 20px;
+    /* border: 1px solid white; */
+}
+
+.footer-content-box {
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+}
+
+#footer-copyright-text, #footer-subtitle-text {
+    margin-left: 15px;
+}
+
+#footer-copyright-text {
+    color: lightgray;
+    font-size: 15px;
+    margin-top: 50px;
+    /* text-align: center; */
+}
+
+
+#footer-subtitle-text {
+    font-weight: 600;
+}
+
+.footer-logo-wrapper {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+#footer-logo-title {
+    font-size: 35px;
+    color: white;
+    font-weight: 600;
+}
+
+.footer-fade-logo {
+    width: 60px;
+    object-fit: contain;
+    height: auto;
+}
+
+
+form.footer-review-box  {
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr 40px;
+    gap: 40px;
+    /* border: 1px solid white; */
+    height: 280px;
+    max-width: 350px;
+}
+
+#share-review-title i {
+    font-size: 30px;
+}
+
+#share-review-title {
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+#footer-review-textarea {
+    height: 100%;
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1.5px solid var(--logo-clr);
+    /* box-shadow: 2px 2px 15px 3px var(--logo-clr) inset; */
+    padding: 15px;
+    font-size: 17px;
+    border-radius: 8px;
+    color: white;
+    resize: none;
+    transition: transform 0.3s ease-in-out;
+    font-weight: 500;
+    font-family: "cascadia code", sans-serif;
+}
+
+#footer-review-textarea:focus {
+    outline: none;
+    transform: scale(1.05);
+}
+
+button#footer-review-button {
+    height: 40px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+    border: none;
+    font-family: "cascadia code", sans-serif;
+}
+
+button#footer-review-button:hover {
+    transform: scale(1.02);
 }

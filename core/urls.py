@@ -10,5 +10,6 @@ urlpatterns = [
     path("errorframe/<str:error_id>", views.showError, name="show_error"),
     path("post_comment", views.saveComment, name="save_comment"),
     path("get_comments", views.getComments, name="get_comments"),
-    path("delete_errorframe/<str:error_id>", views.deleteErrorframe, name="delete_errorframe")
+    path("delete_errorframe/<str:error_id>", views.deleteErrorframe, name="delete_errorframe"),
+    path("send_review", views.send_review, name="send_review")
 ]

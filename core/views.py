@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import SharedError, ErrorFile, Comment
 
-from .utils import guess_language_from_filename, createFileHierarchy, debugDump, debugPrint, format_datetime, debugTextDump
+from .utils import guess_language_from_filename, createFileHierarchy, debugDump, debugPrint, format_datetime, debugTextDump, send_email
 
 import os
 import json
@@ -166,7 +166,7 @@ def deleteErrorframe(request, error_id):
 
 def home(request) :
 
-    example_error_id = "fb4aa58c-b987-4e7d-b7ed-58fd7c75ea12"
+    example_error_id = "37135751-2680-4b38-a710-b79bef163e51"
 
     try:
         example_error_object = get_object_or_404(SharedError, id=example_error_id)
@@ -176,3 +176,17 @@ def home(request) :
     example_error_link = request.build_absolute_uri(f"/errorframe/{example_error_object.id}")
     
     return render(request, "core/home.html", { "example_error_link" : example_error_link})
+
+
+def send_review(request):
+
+    if request.method == "POST":
+
+        try:
+            message = request.POST.get("message")
+            send_email(message)
+
+            return JsonResponse({ "status" : "success", "messge" : 'Review Send successfully.'}, status=200)
+
+        except Exception as e:
+            return JsonResponse({"status" : "Failed", "message" : e}, status=400)

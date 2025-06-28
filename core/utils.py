@@ -1,5 +1,10 @@
 import json
 from django.utils import formats
+import smtplib
+from decouple import config
+
+email = config("EMAIL")
+password = config("PASSWORD")
 
 def guess_language_from_filename(filename: str) -> str:
     extension_map = {
@@ -122,3 +127,23 @@ def debugTextDump(text):
         file.write(text)
 
     return
+
+
+
+def send_email(message):
+
+    if  not message :
+        return False
+    else:
+        try:
+            with  smtplib.SMTP('smtp.gmail.com') as connection:
+                connection.starttls()
+                connection.login(user=email, password=password)
+                connection.sendmail(from_addr=email,
+                                    to_addrs="abhisarverma163@gmail.com",
+                                    msg=f'Subject:Errorhelp Website User Review\n\n{message}')
+        except Exception as e :
+            return False
+
+        else:
+            return True
