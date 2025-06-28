@@ -1,0 +1,39 @@
+@media all and (max-width: 900px) {
+    .footer-inner-wrapper {
+        width: 90%;
+    }
+    #footer-subtitle-text {
+        font-size: 13px;
+    }
+}
+
+@media all and (max-width: 750px) {
+    footer.site-footer {
+        height: auto;
+        padding-bottom: 50px;
+    }
+    .footer-inner-wrapper {
+        max-width: 90vw;
+        flex-direction: column;
+        gap: 70px;
+        align-items: center;
+    }
+    .footer-content-box {
+        max-width: 100%;
+    }
+    #footer-copyright-text {
+        display: none;
+    }
+    form.footer-review-box {
+        max-width: 350px;
+    }
+}
+
+@media all and (max-width: 400px) {
+    #github-button {
+        display: none;
+    }
+    .footer-inner-wrapper {
+        padding-inline: 15px;
+    }
+}
