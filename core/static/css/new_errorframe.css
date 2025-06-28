@@ -199,6 +199,7 @@ main.main {
 
 #drag-and-drop-text {
     font-weight: 500;
+    font-size: 18px;
 }
 
 #or-text {
@@ -228,9 +229,18 @@ main.main {
 }
 
 #errorTextInput {
-    height: 150px;
+    min-height: 150px;
     font-family: var(--errortext-font-family);
     line-height: normal;
+    /* overflow: auto; */
+}
+
+#errorTextInput::-webkit-scrollbar {
+  width: 6px;
+}
+#errorTextInput::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
 }
 
 .button-group {
@@ -241,6 +251,15 @@ main.main {
 #errorDescriptionInput {
     height: 120px;
 }
+
+#errorDescriptionInput::-webkit-scrollbar {
+  width: 6px;
+}
+#errorDescriptionInput::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
 
 #submit-error-button {
     width: 300px;

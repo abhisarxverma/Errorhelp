@@ -299,6 +299,25 @@ footer.site-footer {
     height: auto;
 }
 
+#footer-github-text {
+    margin-top: 70px;
+    font-size: 25px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+#footer-github-text i {
+    font-size: 28px;
+}
+
+#footer-github-text:hover {
+    transform: translateX(10px);
+}
+
 
 form.footer-review-box  {
     grid-column: 2/3;
@@ -320,9 +339,6 @@ form.footer-review-box  {
     font-size: 17px;
     font-weight: 600;
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr;
-    align-items: center;
     gap: 20px;
 }
 
@@ -330,10 +346,10 @@ form.footer-review-box  {
     height: 100%;
     width: 100%;
     background-color: var(--input-bg);
-    border: 1.5px solid var(--logo-clr);
+    border: 1px solid var(--logo-clr);
     /* box-shadow: 2px 2px 15px 3px var(--logo-clr) inset; */
     padding: 15px;
-    font-size: 17px;
+    font-size: 15px;
     border-radius: 8px;
     color: white;
     resize: none;

@@ -81,6 +81,10 @@
         flex-direction: column;
         align-items: flex-start;
     }
+    .error-header-group {
+        margin-top: 20px;
+        gap: 50px;
+    }
 }
 
 @media all and (max-width: 400px) {
@@ -153,4 +157,7 @@
         margin: 0;
     }
 
+    .help-comments-section {
+        margin-top: 20px;
+    }
 }

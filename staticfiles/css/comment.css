@@ -41,6 +41,7 @@
 
 .help-comment-content {
     margin-right: 70px;
+    font-size: 16px;
 }
 
 .help-comment-name-group {
@@ -146,6 +147,7 @@
     border: 1.5px solid var(--border);
     border-radius: 7px;
     font-family: "onest";
+    font-size: 15px;
 }
 
 #help-comment-post-button {

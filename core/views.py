@@ -166,7 +166,7 @@ def deleteErrorframe(request, error_id):
 
 def home(request) :
 
-    example_error_id = "37135751-2680-4b38-a710-b79bef163e51"
+    example_error_id = "dd576c2a-61f3-4093-858d-81ce4910fda9"
 
     try:
         example_error_object = get_object_or_404(SharedError, id=example_error_id)
