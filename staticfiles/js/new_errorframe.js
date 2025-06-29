@@ -29,6 +29,12 @@ const filesGroupWrapper = find(".files-group-wrapper")
 const uploadedFilesGroup = find(".uploaded-files-group")
 const uploadedFilesList = find(".uploaded-files-list")
 
+const submitLoader = findById("submit-loader")
+const submitButtonSpan = findById("submit-button-span")
+
+//  submitButtonSpan.style.display = "none";
+// submitLoader.style.display = "block";
+
 const successPopup = find(".success-popup")
 // showPopup(successPopup)
 
@@ -204,6 +210,9 @@ function sendData() {
     formData.append("description", errorDescription);
     formData.append("name", name)
 
+    submitButtonSpan.style.display = "none";
+    submitLoader.style.display = "block";
+
     try { 
         fetch('/new_errorframe', {
             method: 'POST',
@@ -232,6 +241,9 @@ function sendData() {
     } catch (error) {
         console.log(error)
         showTopErrorMessage("Something went wrong!")
+    } finally {
+        submitLoader.style.display = "none";
+        submitButtonSpan.style.display = "block";
     }
 
 }

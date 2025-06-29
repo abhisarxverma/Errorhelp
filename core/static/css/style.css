@@ -1,19 +1,19 @@
 :root {
-    --logo-clr : #58a6ff;
-    --font-family : "onest", sans-serif;
+    --logo-clr: #58a6ff;
+    --font-family: "onest", sans-serif;
     --errortext-font-family: "cascadia code", sans-serif;
-    --header-bg : #161b22;
+    --header-bg: #161b22;
     --main-button-bg: #238636;
-    --main-button-hover-bg : #2ab345;
-    --main-bg : rgb(13,17,23);
-    --input-border-clr : rgb(48,54,61);
-    --input-bg : #0d1117;
+    --main-button-hover-bg: #2ab345;
+    --main-bg: rgb(13, 17, 23);
+    --input-border-clr: rgb(48, 54, 61);
+    --input-bg: #0d1117;
     --browse-file-hover-bg: rgb(48, 50, 53);
     --browse-file-bg: #21262d;
     --uploaded-file-bg: #161b22;
-    --uploaded-file-hover-bg : #252c38;
-    --box-bg : #161b22;
-    --top-error-message-red : rgb(174, 0, 0);
+    --uploaded-file-hover-bg: #252c38;
+    --box-bg: #161b22;
+    --top-error-message-red: rgb(174, 0, 0);
 }
 
 *,
@@ -22,7 +22,12 @@
     box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5,p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
     margin: 0;
     font-family: var(--font-family);
 }
@@ -30,7 +35,7 @@ h1,h2,h3,h4,h5,p {
 /* UTILITY CLASSES */
 
 .hide {
-    opacity : 0;
+    opacity: 0;
     pointer-events: none;
     visibility: hidden;
 }
@@ -68,20 +73,21 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
+
 body::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 3px;
+    background: #444;
+    border-radius: 3px;
 }
 
 body.modal-open {
-  overflow: hidden;
-  pointer-events: none;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 body.modal-open #codeBox {
-  pointer-events: auto;
+    pointer-events: auto;
 }
 
 .main-wrapper {
@@ -108,6 +114,7 @@ header.header {
     align-items: center;
     justify-content: center;
     transform: translate(-20px);
+    cursor: pointer;
 }
 
 #header-title {
@@ -159,25 +166,25 @@ header.header {
 }
 
 .top-message {
-  position: fixed;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-family: 'Segoe UI', sans-serif;
-  opacity: 0;
-  transition: all 0.5s ease;
-  z-index: 9999;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  pointer-events: none;
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Segoe UI', sans-serif;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 9999;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
 }
 
 .top-message.show {
-  top: 20px;
-  opacity: 1;
+    top: 20px;
+    opacity: 1;
 }
 
 #top-general-message {
@@ -199,15 +206,15 @@ header.header {
 }
 
 .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(4px);
-  background-color: rgba(0, 0, 0, 0.4); 
-  z-index: 959;
-  display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 959;
+    display: none;
 }
 
 #github-button {
@@ -265,7 +272,8 @@ footer.site-footer {
     flex-direction: column;
 }
 
-#footer-copyright-text, #footer-subtitle-text {
+#footer-copyright-text,
+#footer-subtitle-text {
     margin-left: 15px;
 }
 
@@ -319,7 +327,7 @@ footer.site-footer {
 }
 
 
-form.footer-review-box  {
+form.footer-review-box {
     grid-column: 2/3;
     display: grid;
     grid-template-columns: 1fr;
@@ -380,4 +388,31 @@ button#footer-review-button {
 
 button#footer-review-button:hover {
     transform: scale(1.02);
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    border: 5px solid white;
+    border-top: 5px solid transparent;
+    transition: rotate ease-in;
+    animation: load 2s linear infinite;
+    display: none;
+}
+
+@keyframes load {
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+#send-review-button-loader {
+    border-top: 3px solid black;
+    animation: load 1s linear infinite;
 }
