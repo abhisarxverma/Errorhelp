@@ -12,6 +12,7 @@ reviewForm.addEventListener("submit", async function(event) {
     event.preventDefault();
     sendReviewButtonIcon.style.display = "none";
     sendReviewButtonLoader.style.display = "block";
+    sendButton.disabled = true;
 
     let message = reviewTextarea.value;
 
@@ -19,8 +20,7 @@ reviewForm.addEventListener("submit", async function(event) {
 
     formData.append("message", message)
 
-    await new Promise(resolve => setTimeout(resolve, 3000));
-
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     secureFetch("/send_review", {
         method : "POST",
@@ -38,12 +38,12 @@ reviewForm.addEventListener("submit", async function(event) {
     })
     .then( data => {
         if ( data.status === "success" ) {
-            console.log(data)
+            // console.log(data)
             showTopMessage("Review Successfully sent, Thank you very much.");
         }
         else {
             showTopErrorMessage("Something Went Wrong.");
-            console.log(data);
+            // console.log(data);
         }
     })
     .catch(error => {
@@ -53,6 +53,7 @@ reviewForm.addEventListener("submit", async function(event) {
 
     sendReviewButtonIcon.style.display = "block";
     sendReviewButtonLoader.style.display = "none";
+    sendButton.disabled = false;
 
     reviewTextarea.value = "";
 

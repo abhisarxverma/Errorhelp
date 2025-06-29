@@ -386,6 +386,12 @@ button#footer-review-button {
     font-family: "cascadia code", sans-serif;
 }
 
+button#footer-review-button:disabled {
+    background-color: white;
+    color: black;
+}
+
+
 button#footer-review-button:hover {
     transform: scale(1.02);
 }
@@ -395,8 +401,8 @@ button#footer-review-button:hover {
     height: 20px;
     border-radius: 50%;
     background: transparent;
-    border: 5px solid white;
-    border-top: 5px solid transparent;
+    border: 3px solid white;
+    border-top: 3px solid transparent;
     transition: rotate ease-in;
     animation: load 2s linear infinite;
     display: none;

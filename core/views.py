@@ -14,7 +14,6 @@ import json
 
 # Create your views here.
 
-@csrf_exempt
 def newError(request):
     if request.method == "POST":
         codefiles = request.FILES.getlist("files[]")

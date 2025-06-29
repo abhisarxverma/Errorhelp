@@ -1,8 +1,10 @@
 /* WELCOME TO THE CODE BASE OF THE ERRORHELP, HAPPY READING */
 
-import { find, findAll, findById, show, hide, showPopup, showTopMessage, showTopErrorMessage, copyToClipboard, blackListUploads } from "./utils.js";
+import { find, findAll, findById, show, hide, showPopup, showTopMessage, showTopErrorMessage, copyToClipboard, blackListUploads, secureFetch } from "./utils.js";
 
 const FILE_COUNT_LIMIT = 50;
+
+const mainForm = find("form.main")
 
 const browseFilesButton = findById("file-uploader-label");
 const filesInput = findById("file-uploader-input");
@@ -38,10 +40,14 @@ const submitButtonSpan = findById("submit-button-span")
 const successPopup = find(".success-popup")
 // showPopup(successPopup)
 
-submitButton.addEventListener("click", function () {
-    console.log("Submit button clicked")
+mainForm.addEventListener("submit", function(event) {
+    event.preventDefault();
     sendData();
 })
+
+// submitButton.addEventListener("click", function () {
+//     console.log("Submit button clicked")
+// })
 
 fileDropZone.addEventListener('click', () => filesInput.click());
 
@@ -62,7 +68,9 @@ fileDropZone.addEventListener('drop', (e) => {
     }
     console.log("Files : ", CodeFiles);
     show(uploadedFilesGroup);
-    showTopMessage(`Total Files Uploaded : ${CodeFiles.length}`)
+    setTimeout(() => {
+        showTopMessage(`Total Files Uploaded : ${CodeFiles.length}`);
+    }, 300);
 });
 
 filesInput.addEventListener('change', () => {
@@ -70,7 +78,9 @@ filesInput.addEventListener('change', () => {
     Array.from(files).forEach(file => handleFile(file));
     console.log('Codefiles', CodeFiles);
     show(uploadedFilesGroup);
-    showTopMessage(`Total Files Uploaded : ${CodeFiles.length}`)
+    setTimeout(() => {
+        showTopMessage(`Total Files Uploaded : ${CodeFiles.length}`);
+    }, 300);
 });
 
 function readFile(file) {
@@ -122,6 +132,7 @@ function traverseFileTree(item, path = '') {
         readEntries();
     }
 }
+
 
 function renderUploadedFiles(files = CodeFiles) {
     if (files.length <= 0) hide(uploadedFilesGroup);
@@ -212,39 +223,44 @@ function sendData() {
 
     submitButtonSpan.style.display = "none";
     submitLoader.style.display = "block";
+    submitButton.disabled = true;
 
-    try { 
-        fetch('/new_errorframe', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            try{
-                let data = response.json();
-                return data;
-            }
-            catch (error) {
-                showTopErrorMessage("Something Went Wrong.")
-            }
-        })
-        .then(data => {
-            if (data.status === 'success') {
-                // window.location.href = data.errorframe_url; 
-                showSuccessPopup(data);
-                titleInput.value = ""
-                textInput.value = ""
-                descriptionInput.value = ""
-                nameInput.value = ""
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    } catch (error) {
-        console.log(error)
-        showTopErrorMessage("Something went wrong!")
-    } finally {
-        submitLoader.style.display = "none";
-        submitButtonSpan.style.display = "block";
-    }
+    setTimeout(() => {
+        try { 
+            secureFetch('/new_errorframe', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                try{
+                    let data = response.json();
+                    return data;
+                }
+                catch (error) {
+                    showTopErrorMessage("Something Went Wrong.")
+                }
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    // window.location.href = data.errorframe_url; 
+                    showSuccessPopup(data);
+                    titleInput.value = ""
+                    textInput.value = ""
+                    descriptionInput.value = ""
+                    nameInput.value = ""
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } catch (error) {
+            console.log(error)
+            showTopErrorMessage("Something went wrong!")
+        } finally {
+            submitLoader.style.display = "none";
+            submitButtonSpan.style.display = "block";
+            submitButton.disabled = false;
+        }
+
+    }, 0)
 
 }
 
