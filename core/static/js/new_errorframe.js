@@ -249,6 +249,9 @@ function sendData() {
                     descriptionInput.value = ""
                     nameInput.value = ""
                 }
+                else {
+                    showTopErrorMessage(data.message)
+                }
             })
             .catch(error => console.error('Error:', error));
         } catch (error) {

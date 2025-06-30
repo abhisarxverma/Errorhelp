@@ -42,7 +42,7 @@ reviewForm.addEventListener("submit", async function(event) {
             showTopMessage("Review Successfully sent, Thank you very much.");
         }
         else {
-            showTopErrorMessage("Something Went Wrong.");
+            showTopErrorMessage(data["message"]);
             // console.log(data);
         }
     })

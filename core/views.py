@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import SharedError, ErrorFile, Comment
 
-from .utils import guess_language_from_filename, createFileHierarchy, debugDump, debugPrint, format_datetime, debugTextDump, send_email
+from .utils import guess_language_from_filename, createFileHierarchy, debugDump, debugPrint, format_datetime, debugTextDump, send_email, is_clean_text
 
 import os
 import json
@@ -22,6 +22,9 @@ def newError(request):
         description = request.POST.get("description")
         errortext = request.POST.get("errortext")
         name = request.POST.get("name")
+
+        if not is_clean_text(title) or not is_clean_text(description) or not is_clean_text(errortext) or not is_clean_text(name):
+            return JsonResponse({'status': 'failed', 'message': 'Inappropriate content detected.'}, status=400)
 
         if len(paths) != len(codefiles):
             return JsonResponse({"status": "failed", 'error': 'File/path mismatch'}, status=400)
@@ -106,6 +109,9 @@ def saveComment(request):
         commentor_name = request.POST.get("name")
         content = request.POST.get("content")
 
+        if not is_clean_text(commentor_name) or not is_clean_text(content):
+            return JsonResponse({'status': 'failed', 'message': 'Inappropriate content detected.'}, status=400)
+
         new_comment = Comment.objects.create(
             name=commentor_name,
             content=content,
@@ -183,9 +189,13 @@ def send_review(request):
 
         try:
             message = request.POST.get("message")
+
+            if not is_clean_text(message):
+                return JsonResponse({'status': 'failed', 'message': 'Inappropriate content detected.'}, status=400)
+
             send_email(message)
 
             return JsonResponse({ "status" : "success", "messge" : 'Review Send successfully.'}, status=200)
 
         except Exception as e:
-            return JsonResponse({"status" : "Failed", "message" : e}, status=400)
+            return JsonResponse({"status" : "failed", "message" : e}, status=400)

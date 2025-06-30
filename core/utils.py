@@ -2,9 +2,18 @@ import json
 from django.utils import formats
 import smtplib
 from decouple import config
+import re
+from django.http import JsonResponse
 
 email = config("EMAIL")
 password = config("PASSWORD")
+
+CUSTOM_PROFANE_WORDS = config("CUSTOM_PROFANITY").split(",")
+
+BAD_WORDS = [word.strip() for word in CUSTOM_PROFANE_WORDS if word.strip()]
+
+# default_words = profanity.get_profane_words()
+# profanity.load_censor_words(list(set(default_words + custom_words)))
 
 def guess_language_from_filename(filename: str) -> str:
     extension_map = {
@@ -147,3 +156,29 @@ def send_email(message):
 
         else:
             return True
+        
+debugDump(BAD_WORDS)
+
+def is_clean_text(text):
+    text = text.lower()
+
+    for pattern in BAD_WORDS:
+        pattern = pattern.strip().lower()
+
+        # If it's a phrase (contains space), match as-is (ignore case)
+        if ' ' in pattern:
+            if pattern in text:
+                return False
+        else:
+            # For single words, use word boundaries
+            regex = re.compile(r'\b' + re.escape(pattern) + r'\b')
+            if regex.search(text):
+                return False
+
+    return True
+        
+
+# Function to check the Foul Text Being passed in Inputs
+def check_profanity(text) :
+    if is_clean_text(text):
+        return JsonResponse({'status': 'failed', 'message': 'Inappropriate content detected.'}, status=400)
