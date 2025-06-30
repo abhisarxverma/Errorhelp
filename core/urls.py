@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, re_path
+from django.views.static import serve
+from django.conf import settings
 
 from . import views
 
@@ -11,5 +13,10 @@ urlpatterns = [
     path("post_comment", views.saveComment, name="save_comment"),
     path("get_comments", views.getComments, name="get_comments"),
     path("delete_errorframe/<str:error_id>", views.deleteErrorframe, name="delete_errorframe"),
-    path("send_review", views.send_review, name="send_review")
+    path("send_review", views.send_review, name="send_review"),
+
+    re_path(r'^sitemap\.xml$', serve, {
+        'document_root': settings.STATIC_ROOT,
+        'path': 'sitemap.xml'
+    }),
 ]
