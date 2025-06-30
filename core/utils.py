@@ -157,7 +157,6 @@ def send_email(message):
         else:
             return True
         
-debugDump(BAD_WORDS)
 
 def is_clean_text(text):
     text = text.lower()
