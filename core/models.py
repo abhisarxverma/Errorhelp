@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.utils import timezone
+from django.utils.dateformat import format
 
 class SharedError(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -46,6 +47,7 @@ class Comment(models.Model):
         return {
             "commentor_name" : self.name,
             "content" : self.content,
+            # "comment_time": format(self.comment_time, 'N j, Y, P'),
             "comment_time" : self.comment_time,
             "shared_error" : str(self.shared_error.id)
         }

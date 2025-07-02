@@ -1,9 +1,15 @@
-import json
 from django.utils import formats
-import smtplib
 from decouple import config
-import re
 from django.http import JsonResponse
+from django.core.cache import cache
+from functools import wraps
+import smtplib
+import json
+import time
+import re
+
+MAX_ERRORS_PER_IP = 5
+CACHE_TIMEOUT = 60 * 60 * 24
 
 email = config("EMAIL")
 password = config("PASSWORD")
@@ -12,8 +18,30 @@ CUSTOM_PROFANE_WORDS = config("CUSTOM_PROFANITY").split(",")
 
 BAD_WORDS = [word.strip() for word in CUSTOM_PROFANE_WORDS if word.strip()]
 
-# default_words = profanity.get_profane_words()
-# profanity.load_censor_words(list(set(default_words + custom_words)))
+
+def check_limit(request, key):
+    ip = get_client_ip(request)
+    cache_key = f"{key}:{ip}"
+    
+    count = cache.get(cache_key, 0)
+    
+    new_count = count + 1
+    
+    # debugPrint(f"{key} - Current: {count}, New: {new_count}")
+    
+    if new_count > 5:
+        return False
+    
+    cache.set(cache_key, new_count, timeout=86400)
+    return True
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 def guess_language_from_filename(filename: str) -> str:
     extension_map = {

@@ -95,6 +95,14 @@ function readFile(file) {
 }
 
 function handleFile(file) {
+
+    const MAX_CODE_FILE_SIZE = 1048576; 
+
+    if (file.size > MAX_CODE_FILE_SIZE) {
+        console.warn(`Skipping ${file.name}: too large (${file.size} bytes)`);
+        return;
+    }
+
     const normalized = {
         file,
         relativePath: file.webkitRelativePath || file.RelativePath || file.name

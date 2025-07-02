@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import SharedError, ErrorFile, Comment
 
-from .utils import guess_language_from_filename, createFileHierarchy, debugDump, debugPrint, format_datetime, debugTextDump, send_email, is_clean_text
+from .utils import guess_language_from_filename, createFileHierarchy, debugDump, debugPrint, format_datetime, debugTextDump, send_email, is_clean_text, check_limit
 
 import os
 import json
@@ -28,6 +28,9 @@ def newError(request):
 
         if len(paths) != len(codefiles):
             return JsonResponse({"status": "failed", 'error': 'File/path mismatch'}, status=400)
+        
+        if not check_limit(request, "shared-errors"):
+            return JsonResponse({"status":"failed", "message": "Limit reached, Try again later."}, status=403)
 
         error_object = SharedError.objects.create(
             title=title,
@@ -96,7 +99,6 @@ def showError(request, error_id):
         "comments" : comments
     })
 
-
 def saveComment(request):
 
     if request.method == "POST":
@@ -111,6 +113,9 @@ def saveComment(request):
 
         if not is_clean_text(commentor_name) or not is_clean_text(content):
             return JsonResponse({'status': 'failed', 'message': 'Inappropriate content detected.'}, status=400)
+        
+        if not check_limit(request, "comments"):
+            return JsonResponse({"status":"failed", "message": "Limit reached, Try again later."}, status=403)
 
         new_comment = Comment.objects.create(
             name=commentor_name,
@@ -141,8 +146,8 @@ def getComments(request):
             return JsonResponse({"status": "failed", "message" : e, "comments" : "no comments fetched"}, status=400)
 
         comments_list = [comment.to_dict() for comment in error_object.comments.all().order_by("-comment_time")]
-        for comment in comments_list:
-            comment["comment_time"] = format_datetime(comment["comment_time"])
+        # for comment in comments_list:
+        #     comment["comment_time"] = format_datetime(comment["comment_time"])
 
         return JsonResponse({"status": "success", "message" : "All comments fetched.", "comments" : comments_list}, status=200)
     
@@ -182,7 +187,6 @@ def home(request) :
     
     return render(request, "core/home.html", { "example_error_link" : example_error_link})
 
-
 def send_review(request):
 
     if request.method == "POST":
@@ -192,6 +196,9 @@ def send_review(request):
 
             if not is_clean_text(message):
                 return JsonResponse({'status': 'failed', 'message': 'Inappropriate content detected.'}, status=400)
+            
+            if not check_limit(request, "reviews"):
+                return JsonResponse({"status":"failed", "message": "Limit reached, Try again later."}, status=403)
 
             send_email(message)
 
