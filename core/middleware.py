@@ -2,6 +2,8 @@ from django.http import JsonResponse
 from django.core.cache import cache
 import time
 
+# TOOK FROM THE CLAUDE, THIS IS MY FIRST FULL STACK SITE SO NEEDED TO LEARN THIS THING
+
 class RateLimitMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
@@ -16,6 +18,9 @@ class RateLimitMiddleware:
         
         # Check if this path should be rate limited
         should_rate_limit = any(path in request.path.lower() for path in rate_limit_paths)
+
+        if not should_rate_limit or request.method != 'POST':
+            return self.get_response(request)
         
         if not should_rate_limit:
             return self.get_response(request)

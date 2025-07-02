@@ -177,7 +177,7 @@ function validateFilesCount(files) {
     return true;
 }
 
-function sendData() {
+async function sendData() {
 
     if (!validateFilesCount(CodeFiles)) {
         showTopErrorMessage("File count Exceeded, Please Remove some Files.");
@@ -195,7 +195,6 @@ function sendData() {
     let paths = [];
 
     CodeFiles.forEach(({ file, relativePath }) => {
-        // console.log(file, relativePath)
         formData.append("files[]", file, relativePath);
         paths.push(relativePath)
     })
@@ -233,46 +232,34 @@ function sendData() {
     submitLoader.style.display = "block";
     submitButton.disabled = true;
 
-    setTimeout(() => {
-        try { 
-            secureFetch('/new_errorframe', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                try{
-                    let data = response.json();
-                    return data;
-                }
-                catch (error) {
-                    showTopErrorMessage("Something Went Wrong.")
-                }
-            })
-            .then(data => {
-                if (data.status === 'success') {
-                    // window.location.href = data.errorframe_url; 
-                    showSuccessPopup(data);
-                    titleInput.value = ""
-                    textInput.value = ""
-                    descriptionInput.value = ""
-                    nameInput.value = ""
-                }
-                else {
-                    showTopErrorMessage(data.message)
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        } catch (error) {
-            console.log(error)
-            showTopErrorMessage("Something went wrong!")
-        } finally {
-            submitLoader.style.display = "none";
-            submitButtonSpan.style.display = "block";
-            submitButton.disabled = false;
+    try { 
+        const response = await secureFetch('/new_errorframe', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json(); 
+
+        if (data.status === 'success') {
+            showSuccessPopup(data);
+            titleInput.value = ""
+            textInput.value = ""
+            descriptionInput.value = ""
+            nameInput.value = ""
         }
-
-    }, 0)
-
+        else {
+            showTopErrorMessage(data.message)
+        }
+    } 
+    catch (error) {
+        console.error('Error:', error);
+        showTopErrorMessage("Something went wrong!")
+    } 
+    finally {
+        submitLoader.style.display = "none";
+        submitButtonSpan.style.display = "block";
+        submitButton.disabled = false;
+    }
 }
 
 function showSuccessPopup(data) {
