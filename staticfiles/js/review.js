@@ -8,54 +8,40 @@ const sendReviewButtonLoader = findById("send-review-button-loader")
 const sendReviewButtonIcon = findById("send-review-button-icon")
 
 reviewForm.addEventListener("submit", async function(event) {
-
     event.preventDefault();
     sendReviewButtonIcon.style.display = "none";
     sendReviewButtonLoader.style.display = "block";
     sendButton.disabled = true;
 
     let message = reviewTextarea.value;
+    let formData = new FormData();
+    formData.append("message", message);
 
-    let formData = new FormData()
+    try {
+        const response = await secureFetch("/send_review", {
+            method: "POST",
+            body: formData
+        });
 
-    formData.append("message", message)
+        const data = await response.json();
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    secureFetch("/send_review", {
-        method : "POST",
-        body : formData
-    })
-    .then(response => {
-        try{
-            let data = response.json();
-            return data;
-        }
-        catch (error) {
-            console.log(response)
-            showTopErrorMessage("Something Went wrong!")
-        }
-    })
-    .then( data => {
-        if ( data.status === "success" ) {
-            // console.log(data)
+        if (data.status === "success") {
             showTopMessage("Review Successfully sent, Thank you very much.");
-        }
-        else {
+            
+            setTimeout(() => {
+                reviewTextarea.value = "";
+            }, 100);
+        } else {
             showTopErrorMessage(data["message"]);
-            // console.log(data);
         }
-    })
-    .catch(error => {
+    } catch (error) {
         showTopErrorMessage("Something went wrong!");
         console.error(error);
-    })
-
-    sendReviewButtonIcon.style.display = "block";
-    sendReviewButtonLoader.style.display = "none";
-    sendButton.disabled = false;
-
-    reviewTextarea.value = "";
-
-    return false;
+    } finally {
+        requestAnimationFrame(() => {
+            sendReviewButtonIcon.style.display = "block";
+            sendReviewButtonLoader.style.display = "none";
+            sendButton.disabled = false;
+        });
+    }
 });
