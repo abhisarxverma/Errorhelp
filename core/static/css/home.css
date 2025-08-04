@@ -23,6 +23,11 @@
     transform: translateY(-50%);
 }
 
+.main-wrapper {
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
 main.main {
     /* max-width: 90%px; */
     padding: 0px 20px;

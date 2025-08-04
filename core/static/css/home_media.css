@@ -5,6 +5,7 @@
         padding: 0px;
         padding-left: 20px;
         padding-right: 15px;
+        max-width: 1200px;
     }
     main.main {
         width: 100%;
