@@ -423,3 +423,7 @@ button#footer-review-button:hover {
     border-top: 3px solid black;
     animation: load 1s linear infinite;
 }
+
+.nameLink {
+    color: white;
+}

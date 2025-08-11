@@ -162,7 +162,7 @@
         width: 150px;
         height: 90px;
     }
-    .left-container .features li {
-        font-size: 9px;
+    .left-container .features li span {
+        font-size: 11px;
     }
 }
