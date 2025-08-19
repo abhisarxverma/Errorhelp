@@ -2,19 +2,17 @@
 
 # ERRORHELP
 
-> *"I couldn't watch my fellow developers share error screenshots and then code also asking for help in the community chats, so I created this web app where they can put the code snapshot and error terminal message and more about the error at one place and share link everywhere."*
-
-**I started programming 6 months back and this is my first Full Stack Webapp.**
+> *"I couldn't watch my fellow developers share error screenshots and then code also asking for help in the community chats, so I created this web app where they can put the code files and folders and error terminal message and more about the error at one place and share link everywhere."*
 
 **Errorhelp lets you create an Errorframe and share it with helpers so that they can assist you until the bug is fixed.**
 
-### [Go To Errorhelp Live Webapp](https://errorhelp.pythonanywhere.com)
+### [Visit Errorhelp Live Webapp](https://errorhelp.pythonanywhere.com)
 
 ---
 
 ## 🧩 Every Errorframe Has:
 
-1. **🧠 The Error-Causing Code Snapshot**
+1. **🧠 The Error-Causing Code**
 
    * All relevant code files that are causing the error, displayed in a clean VS Code-like viewer so helpers can easily understand the context.
 
